@@ -57,6 +57,25 @@ app.get('/api/resources', (req, res) => {
   res.status(200).json(resources.slice(0, limit));
 });
 
+// READ Request Handler for retrieving single random resource
+/*
+route = /api/resource/random
+action = GET: retrieve random single resource
+*/
+app.get('/api/resource/random', (req, res) => {
+  // Optimization: Direct array access is faster than Object.values()
+  const randomResource = resources[Math.floor(Math.random() * resources.length)];
+  
+  if (!randomResource) return res.status(404).send('<h2 style="font-family: Malgun Gothic; color: darkred;">Could not find that resource.</h2>');
+
+  let format = req.query.format;
+  if (format === "text") {
+    res.status(200).send(randomResource.text);
+  } else {
+    res.status(200).json(randomResource);
+  }
+});
+
 // READ Request Handler for searching resources and returning matches
 /*
 route = /api/resources/search?q=ADD-QUERY-HERE
@@ -89,25 +108,6 @@ app.get('/api/resource/:id', (req, res) => {
   const resource = resources.find(item => item.id === req.params.id);
   if (!resource) return res.status(404).send('<h2 style="font-family: Malgun Gothic; color: darkred;">Could not find that resource.</h2>');
   res.status(200).json(resource);
-});
-
-// READ Request Handler for retrieving single random resource
-/*
-route = /api/resource/random
-action = GET: retrieve random single resource
-*/
-app.get('/api/resource/random', (req, res) => {
-  // Optimization: Direct array access is faster than Object.values()
-  const randomResource = resources[Math.floor(Math.random() * resources.length)];
-  
-  if (!randomResource) return res.status(404).send('<h2 style="font-family: Malgun Gothic; color: darkred;">Could not find that resource.</h2>');
-
-  let format = req.query.format;
-  if (format === "text") {
-    res.status(200).send(randomResource.text);
-  } else {
-    res.status(200).json(randomResource);
-  }
 });
 
 // CREATE Request Handler
