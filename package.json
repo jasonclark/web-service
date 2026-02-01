@@ -1,36 +1,35 @@
 {
-  "name": "api-rest",
-  "version": "1.0.0",
-  "description": "An example of a REST API for teaching and learning; Sample API uses A Tribe Called Quest lyrics.",
+  "name": "A Tribe Called REST",
+  "version": "2.0.0",
+  "description": "REST API using A Tribe Called Quest lyrics (for teaching and learning).",
   "main": "server.js",
+  "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "start": "node server.js",
+    "test": "node --test"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/jasonclark/api-rest.git"
+    "url": "git+https://github.com/jasonclark/web-service.git"
   },
   "keywords": [
     "javascript",
     "REST",
     "API",
     "nodejs",
-    "express",
-    "heroku"
+    "express"
   ],
   "author": "jasonclark",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/jasonclark/api-rest/issues"
+    "url": "https://github.com/jasonclark/web-service/issues"
   },
-  "homepage": "https://github.com/jasonclark/api-rest#readme",
+  "homepage": "https://github.com/jasonclark/web-service#readme",
   "dependencies": {
     "compression": "^1.7.4",
-    "express": "^4.17.1",
-    "joi": "^17.3.0"
+    "express": "^4.18.2"
   },
   "engines": {
-    "node": "15.5.1"
+    "node": ">=20.0.0"
   }
 }
